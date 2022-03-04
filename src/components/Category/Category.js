@@ -1,9 +1,9 @@
 import React from "react";
 import "./category.css";
 import {
-  BrowserRouter as 
   
-  Link,
+  
+  Link
   
   
 } from "react-router-dom";
