@@ -22,10 +22,10 @@ function Category() {
                 <Link to="/ayakkabı">Ayakkabı</Link>
               </li>
               <li>
-                <Link to="tshirt">T-shirt</Link>
+                <Link to="/tshirt">T-shirt</Link>
               </li>
               <li>
-              <Link to="pantolon">Pantolon</Link>
+              <Link to="/pantolon">Pantolon</Link>
               </li>
             </ul>
           </li>
@@ -35,13 +35,13 @@ function Category() {
             </a>
             <ul className="dropdown">
               <li>
-              <Link to="telefon">Telefon</Link>
+              <Link to="/telefon">Telefon</Link>
               </li>
               <li>
-              <Link to="laptop">Laptop</Link>
+              <Link to="/laptop">Laptop</Link>
               </li>
               <li>
-              <Link to="televizyon">Televizyon</Link>
+              <Link to="/televizyon">Televizyon</Link>
               </li>
             </ul>
           </li>
