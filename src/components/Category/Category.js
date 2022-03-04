@@ -1,8 +1,8 @@
 import React from "react";
 import "./category.css";
 import {
-  BrowserRouter as Router,
-  useParams,
+  BrowserRouter as 
+  
   Link,
   
   
@@ -14,7 +14,7 @@ function Category() {
       <ul className=" border-bottom ">
         <div className="container">
           <li>
-            <a className="hov" href="#">
+            <a href="/#" className="hov">
               Giyim
             </a>
             <ul className="dropdown">
@@ -30,7 +30,7 @@ function Category() {
             </ul>
           </li>
           <li>
-            <a className="hov" href="#">
+            <a  href="/#"  className="hov">
               Elektronik
             </a>
             <ul className="dropdown">
@@ -46,18 +46,18 @@ function Category() {
             </ul>
           </li>
           <li>
-            <a className="hov" href="#">
+            <a  href="/#"  className="hov" >
               Kozmetik
             </a>
             <ul className="dropdown">
               <li>
-                <a href="#">Saç Bakım</a>
+                <a href="/#" >Saç Bakım</a>
               </li>
               <li>
-                <a href="#">Cilt Bakım</a>
+                <a  href="/#" >Cilt Bakım</a>
               </li>
               <li>
-                <a href="#">Makyaj</a>
+                <a  href="/#" >Makyaj</a>
               </li>
             </ul>
           </li>

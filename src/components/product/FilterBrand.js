@@ -1,6 +1,6 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
-import { Link,useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 function FilterBrand({ formik }) {
   const { id } = useParams();
   
