@@ -1,0 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+
+a.nav-color{
+  text-decoration-line: none !important;
+  color: black !important;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+a:hover{
+  color: #028200 !important;
+}
+.navcolor{
+  background-color: #fff !important;
+  height: 75px !important;
+}
+.greensad:hover{
+border: 1px solid green !important;
+}
+.greensad{
+  border: none;
+}
