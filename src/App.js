@@ -13,7 +13,7 @@ import ProductDetails from "./components/product/ProductDetails/ProductDetails";
 import Footer from "./components/Footer/Footer";
 import Category from "./components/Category/Category";
 import Home from "./components/Home/Home";
-function App() {
+function App({history}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,7 +34,7 @@ function App() {
     dispatch(login({ email, password }));
 
     setLoggedIn(true);
-
+  history.push("/laptop")
     e.preventDefault();
   };
   return (

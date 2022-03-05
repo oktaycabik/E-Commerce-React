@@ -4,7 +4,7 @@ import { useState,  } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/Auth/authSlice";
 
-function Register() {
+function Register({history}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,8 +12,9 @@ function Register() {
   const dispatch = useDispatch();
   const handleRegister = async (e) => {
     dispatch(register({ name, email, password }));
-
+    
     e.preventDefault();
+    
   };
   return (
     <>

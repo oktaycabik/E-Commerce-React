@@ -14,53 +14,42 @@ function Category() {
       <ul className=" border-bottom ">
         <div className="container">
           <li>
-            <a href="/#" className="hov">
-              Giyim
-            </a>
-            <ul className="dropdown">
-              <li>
-                <Link to="/ayakkabı">Ayakkabı</Link>
-              </li>
-              <li>
-                <Link to="/tshirt">T-shirt</Link>
-              </li>
-              <li>
-              <Link to="/pantolon">Pantolon</Link>
-              </li>
-            </ul>
+            <Link to="/ayakkabı" className="hov">
+              Ayakkabı
+            </Link>
+        
           </li>
           <li>
-            <a  href="/#"  className="hov">
-              Elektronik
-            </a>
-            <ul className="dropdown">
-              <li>
-              <Link to="/telefon">Telefon</Link>
-              </li>
-              <li>
-              <Link to="/laptop">Laptop</Link>
-              </li>
-              <li>
-              <Link to="/televizyon">Televizyon</Link>
-              </li>
-            </ul>
+            <Link to="/pantolon" className="hov">
+              Pantolon
+            </Link>
+        
           </li>
           <li>
-            <a  href="/#"  className="hov" >
-              Kozmetik
-            </a>
-            <ul className="dropdown">
-              <li>
-                <a href="/#" >Saç Bakım</a>
-              </li>
-              <li>
-                <a  href="/#" >Cilt Bakım</a>
-              </li>
-              <li>
-                <a  href="/#" >Makyaj</a>
-              </li>
-            </ul>
+            <Link to="/tshirt" className="hov">
+              T-Shirt
+            </Link>
+        
           </li>
+          <li>
+            <Link to="/telefon" className="hov">
+            Telefon
+            </Link>
+        
+          </li>
+          <li>
+            <Link to="/laptop" className="hov">
+            Laptop
+            </Link>
+        
+          </li>
+          <li>
+            <Link to="/televizyon" className="hov">
+            Televizyon
+            </Link>
+        
+          </li>
+      
         </div>
       </ul>
     </>
