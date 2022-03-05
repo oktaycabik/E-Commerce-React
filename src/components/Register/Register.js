@@ -3,22 +3,23 @@ import "./singin.css";
 import { useState,  } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/Auth/authSlice";
+import { useHistory } from "react-router-dom";
 
-function Register({history}) {
+function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  let history=useHistory()
   const dispatch = useDispatch();
   const handleRegister = async (e) => {
     dispatch(register({ name, email, password }));
-    
+    history.push("/singin")
     e.preventDefault();
     
   };
   return (
     <>
-      <main className="form-signin">
+      <main className="form-signin col-md-4">
         <form onSubmit={handleRegister} type="submit">
           <h1 className="h3 mb-3 fw-normal">Please register</h1>
           <div className="form-floating">

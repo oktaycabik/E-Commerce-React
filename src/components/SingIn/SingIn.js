@@ -1,49 +1,66 @@
 import React from "react";
 import "./singin.css";
 
+import { useHistory } from "react-router-dom";
+import { login } from "../../redux/Auth/authSlice";
+import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+function SingIn({setLoggedIn}) {
+   let history =useHistory()
+   const dispatch = useDispatch();
+   const formik = useFormik({
+    
+    initialValues: {
+      email: "",
+      password: "",
+    },
 
-function SingIn({setEmail,email,password,setPassword,handleLogin}) {
-   
+    onSubmit: async (values) => {
+      
+       dispatch(login(values ));
 
+      setLoggedIn(true);
+      history.push("/");
+    },
+    
+  });
   return (
     <>
-      <main className="form-signin">
-        <form  onSubmit={handleLogin} type="submit">
-          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+    <main className="form-signin col-md-4">
+        <form onSubmit={formik.handleSubmit} type="submit">
+          <h1 className="h3 mb-3 fw-normal">Please register</h1>
           <div className="form-floating">
             <input
-            onChange={(e)=>setEmail(e.target.value)}
-            value={email}
-              type="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+              type="text"
+              name="email"
               className="form-control"
-              id="floatingInput"
+              id="floatingEmail"
               placeholder="name@example.com"
             />
-            <label htmlFor="floatingInput">Email address</label>
+            <label htmlFor="floatingEmail">Email</label>
           </div>
           <div className="form-floating">
             <input
-            onChange={(e)=>setPassword(e.target.value)}
-              value={password}
+              onChange={formik.handleChange}
+              value={formik.values.password}
               type="password"
+              name="password"
               className="form-control"
-              id="floatingPassword"
-              placeholder="Password"
+              id="floatingName"
+              placeholder="name@example.com"
             />
-            <label htmlFor="floatingPassword">Password</label>
+            <label htmlFor="floatingInput">Password</label>
           </div>
-          
+
           <div className="checkbox mb-3">
             <label>
               <input type="checkbox" defaultValue="remember-me" /> Remember me
             </label>
           </div>
-          <button
-           
-            className="w-100 btn btn-lg btn-success"
-            type="submit"
-          >
-            Giriş Yap
+          <button className="w-100 btn btn-lg btn-success" type="submit">
+           Giriş Yap
           </button>
         </form>
       </main>

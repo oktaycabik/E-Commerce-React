@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import axios from "axios";
+
 
 export const login = createAsyncThunk("login/login", async (user) => {
   const res = await axios.post(`http://localhost:3001/api/auth/login`, user);
@@ -89,6 +91,8 @@ export const authSlice = createSlice({
   extraReducers: {
     [login.fulfilled]: (state, action) => {
       state.user = action.payload;
+      console.log('state.user', state.user)
+    
       localStorage.setItem("access_token", action.payload.access_token);
       localStorage.setItem("id", action.payload.data.id);
     },
