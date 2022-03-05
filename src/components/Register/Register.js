@@ -13,7 +13,7 @@ function Register() {
   const dispatch = useDispatch();
   const handleRegister = async (e) => {
     dispatch(register({ name, email, password }));
-    history.push("/singin")
+    history.push("singin")
     e.preventDefault();
     
   };

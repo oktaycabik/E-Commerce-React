@@ -5,7 +5,7 @@ import axios from "axios";
 export const getProducts = createAsyncThunk(
   "product/getProducts",
   async ([sortKey, brand, details, category,id]) => {
-    let url = `http://localhost:3001/api/product`;
+    let url = `https://e-cabik.herokuapp.com/api/product`;
     if (sortKey) {
       url += "?sortBy=" + sortKey;
     }
