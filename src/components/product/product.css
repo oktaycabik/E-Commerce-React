@@ -14,7 +14,10 @@
     height: auto;
     transition: all 0.5s ease 0s;
 }
-.product-grid:hover .product-image img{ transform: scale(1.1); }
+.product-grid:hover .product-image img{  }
+.a:hover{
+    box-shadow: 0 3px 14px 2px rgb(31 31 31 / 6%), 0 8px 10px 1px rgb(31 31 31 / 8%), 0 5px 5px -3px rgb(31 31 31 / 6%)  !important;
+}
 .product-grid .product-links{
     background: #fff;
     width: 150px;
@@ -49,7 +52,10 @@
     text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
 }
 .product-grid .product-content{ 
-    padding: 15px; 
+    padding-left: 9px;
+    padding-bottom: 8px;
+    padding-top: 15px;
+    padding-right: 15px;
     background-color: #fefefe !important;
 }
 .product-grid .price{

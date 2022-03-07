@@ -25,7 +25,7 @@ import { addCart, inraceQuantity } from "../../redux/Cart/cartSlice";
 function Product() {
   const [sort, setSort] = useState("önerilen");
   const { id } = useParams();
-  
+
   const products = useSelector((state) => state.item.product);
   const user = useSelector((state) => state.user.profile);
   const cart = useSelector((state) => state.cart.items);
@@ -123,15 +123,15 @@ function Product() {
             </h5>
             {products.map((pro) => (
               <div key={pro._id} className="col-md-3 col-sm-6  ">
-                <div className="product-grid p-1 ">
-                  <div className="product-image ">
+                <div className="product-grid  a">
+                  <div className="product-image border-bottom">
                     <Link
                       to={`/product/${pro._id}/${pro.name}`}
                       className="image"
                     >
                       <img
                         alt=""
-                        className="img-1"
+                        className="img-1 "
                         src={`/${pro?.product_image}`}
                       />
                     </Link>
@@ -150,15 +150,16 @@ function Product() {
                   </div>
                   <div className="product-content text-start">
                     <h2 className="title">
-                      <strong>{pro.brand} </strong>
+                      <strong><small>{pro.brand}</small>  </strong>
                       
                     </h2>
-                    <div className="card-text">
-                    {truncateString(pro.name,45)}
+                    <div className="card-text"> 
+                    <small> {truncateString(pro.name,45)}</small>
+                   
                     </div>
                     <div className="price text-success">
                       {" "}
-                      <b>{pro.price} TL</b>
+                      <b>{pro.price} TL </b>
                     </div>
                   </div>
                 </div>

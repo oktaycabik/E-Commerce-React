@@ -13,39 +13,39 @@ function Category() {
     <>
       <ul className=" border-bottom ">
         <div className="container">
-          <li>
-            <Link to="/ayakkabı" className="hov">
-              Ayakkabı
+          <li className="">
+            <Link to="/ayakkabı" className=" borde">
+              <b>AYAKKABI</b> 
             </Link>
         
           </li>
           <li>
-            <Link to="/pantolon" className="hov">
-              Pantolon
+            <Link to="/pantolon" className="borde">
+               <b>PANTOLON</b>
             </Link>
         
           </li>
           <li>
-            <Link to="/tshirt" className="hov">
-              T-Shirt
+            <Link to="/tshirt" className="borde">
+            <b>T-SHİRT</b>
             </Link>
         
           </li>
           <li>
-            <Link to="/telefon" className="hov">
-            Telefon
+            <Link to="/telefon" className="borde">
+            <b>TELEFON</b>
             </Link>
         
           </li>
           <li>
-            <Link to="/laptop" className="hov">
-            Laptop
+            <Link to="/laptop" className="borde">
+            <b>LAPTOP</b>
             </Link>
         
           </li>
           <li>
-            <Link to="/televizyon" className="hov">
-            Televizyon
+            <Link to="/televizyon" className="borde">
+            <b>TELEVİZYON</b>
             </Link>
         
           </li>

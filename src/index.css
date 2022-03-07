@@ -15,7 +15,7 @@ a.nav-color{
   align-items: center;
 }
 a:hover{
-  color: #028200 !important;
+  color: rgb(35, 161, 35) !important;
 }
 .navcolor{
   background-color: #fff !important;
