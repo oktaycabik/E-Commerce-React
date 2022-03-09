@@ -5,28 +5,25 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../redux/Auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-function SingIn({setLoggedIn}) {
-   let history =useHistory()
-   const dispatch = useDispatch();
-   const formik = useFormik({
-    
+function SingIn({ setLoggedIn }) {
+  let history = useHistory();
+  const dispatch = useDispatch();
+  const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
 
     onSubmit: async (values) => {
-      
-       dispatch(login(values ));
+      dispatch(login(values));
 
       setLoggedIn(true);
       history.push("/");
     },
-    
   });
   return (
     <>
-    <main className="form-signin col-md-4">
+      <main className="form-signin col-md-4">
         <form onSubmit={formik.handleSubmit} type="submit">
           <h1 className="h3 mb-3 fw-normal">Please register</h1>
           <div className="form-floating">
@@ -60,7 +57,7 @@ function SingIn({setLoggedIn}) {
             </label>
           </div>
           <button className="w-100 btn btn-lg btn-success" type="submit">
-           Giriş Yap
+            Giriş Yap
           </button>
         </form>
       </main>

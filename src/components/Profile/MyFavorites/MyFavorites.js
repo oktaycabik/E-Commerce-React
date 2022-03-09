@@ -11,7 +11,7 @@ function MyFavorities() {
   useEffect(() => {
     dispatch(getProfileById(userId));
   }, [dispatch, userId]);
-  console.log("user", user?.favorites);
+ 
   return (
     <div>
       <div className="card  ">

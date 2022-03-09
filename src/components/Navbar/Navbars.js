@@ -51,7 +51,7 @@ function Navbars({ loggedIn, setLoggedIn }) {
                     <BiUser size={17} />
                     <small className=""> Çıkış Yap </small>
                   </a>
-                  <Link to="/profile" className="nav-color my-2 my-sm-0 mx-2 ">
+                  <Link to="/profile/myorder" className="nav-color my-2 my-sm-0 mx-2 ">
                     <BiUser size={17} />
                     <small className=""> Profil </small>
                   </Link>

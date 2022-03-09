@@ -45,3 +45,7 @@
     color: green;
     box-sizing: border-box;
   }
+  .brd{
+    border:#fff 1px solid !important
+  }
+  

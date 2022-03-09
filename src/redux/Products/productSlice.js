@@ -27,7 +27,7 @@ export const getProducts = createAsyncThunk(
   }
 );
 export const getProduct = createAsyncThunk("product/getProduct", async (id) => {
-  let url = `http://localhost:3001/api/product/${id}`;
+  let url = `${process.env.REACT_APP_URL}/product/${id}`;
 
   const res = await axios(url);
 
@@ -37,7 +37,7 @@ export const addToUserFavorite = createAsyncThunk(
   "product/addToUserFavorite",
   async (id) => {
     const tokens1 = localStorage.getItem("access_token");
-    const res = await axios(`http://localhost:3001/api/product/favori/${id}`, {
+    const res = await axios(`${process.env.REACT_APP_URL}/product/favori/${id}`, {
       headers: {
         Authorization: "Bearer: " + tokens1,
       },
@@ -52,7 +52,7 @@ export const unToUserFavorite = createAsyncThunk(
   async (id) => {
     const tokens1 = localStorage.getItem("access_token");
     const res = await axios(
-      `http://localhost:3001/api/product/undo_favori/${id}`,
+      `${process.env.REACT_APP_URL}/product/undo_favori/${id}`,
       {
         headers: {
           Authorization: "Bearer: " + tokens1,
@@ -70,11 +70,17 @@ export const productSlice = createSlice({
     product: [],
     cart: [],
     productDetails: {},
+    loading:false,
   },
   reducers: {},
   extraReducers: {
     [getProducts.fulfilled]: (state, action) => {
       state.product = action.payload;
+      state.loading=false
+    },
+    [getProducts.pending]: (state, action) => {
+     
+      state.loading=true
     },
     [getProduct.fulfilled]: (state, action) => {
       state.productDetails = action.payload;
@@ -84,11 +90,11 @@ export const productSlice = createSlice({
       const { _id } = action.payload;
       const index = state.product.findIndex((a) => a._id === _id);
       state.product[index].favori.push(userId);
-      console.log("addUser", action.payload);
+     
     },
 
     [unToUserFavorite.fulfilled]: (state, action) => {
-      console.log("undouser", action.payload);
+     
       const userId = localStorage.getItem("id");
       const { _id } = action.payload;
       const index = state.product.findIndex((a) => a._id === _id);

@@ -27,10 +27,11 @@ function Product() {
   const { id } = useParams();
 
   const products = useSelector((state) => state.item.product);
+  const loading = useSelector((state) => state.item.loading);
   const user = useSelector((state) => state.user.profile);
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
-
+  console.log("loading", loading);
   const userId = localStorage.getItem("id");
   const formik = useFormik({
     initialValues: {
@@ -43,7 +44,6 @@ function Product() {
   });
   useEffect(() => {
     (async () => {
-     
       dispatch(
         getProducts([
           sort,
@@ -62,26 +62,24 @@ function Product() {
     formik.values.brand,
     formik.values.kullanım,
     formik.values.category,
-    id
-    
+    id,
   ]);
   useEffect(() => {
-    localStorage.setItem("product",JSON.stringify(cart))
-  }, [cart])
-  
+    localStorage.setItem("product", JSON.stringify(cart));
+  }, [cart]);
+
   const addToCart = (productName) => {
     const copyCart = cart.findIndex(
       (pro) => pro.product._id === productName._id
     );
-    
+
     if (copyCart > -1) {
       dispatch(inraceQuantity(copyCart));
     } else if (copyCart === -1) {
       dispatch(addCart({ product: productName, quantity: 1 }));
-
     }
   };
-   const addToFavorite = (productId) => {
+  const addToFavorite = (productId) => {
     const b = products.filter((a) => a._id === productId);
 
     const a = user?.favorites?.map((a) => a._id);
@@ -94,17 +92,19 @@ function Product() {
       dispatch(addToUserFavorite(productId));
     }
   };
-  const truncateString=(string,maxLength)=>{
-    if(!string) return null;
-    if(string.length <= maxLength) return string;
-    return `${string.substring(0,maxLength)}...`;
-  }
-
+  const truncateString = (string, maxLength) => {
+    if (!string) return null;
+    if (string.length <= maxLength) return string;
+    return `${string.substring(0, maxLength)}...`;
+  };
+ 
   return (
     <>
-    
-    <img src={`../backend/public/uploads${products[0]?.product_image}`} alt="" />
-    
+      <img
+        src={`../backend/public/uploads${products[0]?.product_image}`}
+        alt=""
+      />
+
       <SortProduct sort={sort} setSort={setSort} />
 
       <div className="row">
@@ -113,16 +113,23 @@ function Product() {
           <FilterBrand formik={formik} />
           <FilterDetails formik={formik} />
         </div>
-          
+
+        
+
         <div className=" col-md-10">
-          <div style={{ backgroundColor: "#fefefe" }} className="row p-2 ">
-           
+          {
+            loading && (
+              <div>Loading...</div>
+            )
+          }
+           {
+            !loading && (
+              <div style={{ backgroundColor: "#fefefe" }} className="row p-2 ">
             <h5>
-              "{id}" araması için {products.length} sonuç
-              listeleniyor
+              "{id}" araması için {products.length} sonuç listeleniyor
             </h5>
             {products.map((pro) => (
-              <div key={pro._id} className="col-md-3 col-sm-6  ">
+              <div key={pro._id} className="col-md-3 col-sm-4  ">
                 <div className="product-grid  a">
                   <div className="product-image border-bottom">
                     <Link
@@ -150,12 +157,12 @@ function Product() {
                   </div>
                   <div className="product-content text-start">
                     <h2 className="title">
-                      <strong><small>{pro.brand}</small>  </strong>
-                      
+                      <strong>
+                        <small>{pro.brand}</small>{" "}
+                      </strong>
                     </h2>
-                    <div className="card-text"> 
-                    <small> {truncateString(pro.name,45)}</small>
-                   
+                    <div className="card-text">
+                      <small> {truncateString(pro.name, 45)}</small>
                     </div>
                     <div className="price text-success">
                       {" "}
@@ -166,6 +173,9 @@ function Product() {
               </div>
             ))}
           </div>
+            )
+          }
+         
         </div>
       </div>
     </>
