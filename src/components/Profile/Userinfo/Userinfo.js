@@ -27,7 +27,7 @@ function Userinfo({profile}) {
         <div className=" p-3 cards card-text">Kullanıcı Bilgileri</div>
       </div>
       <div>
-        <div className="row mt-2">
+        <div className=" mt-2">
           <div className="card col-md-6 p-3">
           <form onSubmit={formik.handleSubmit} type="submit">
             <label className="form-label" htmlFor="name">

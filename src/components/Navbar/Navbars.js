@@ -2,10 +2,13 @@ import { BiUser } from "react-icons/bi";
 import { FiUserPlus } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/Auth/authSlice";
 
+
 function Navbars({ loggedIn, setLoggedIn }) {
+  const cart = useSelector((state) => state.cart.items);
+
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -13,13 +16,13 @@ function Navbars({ loggedIn, setLoggedIn }) {
   };
   return (
     <>
-      <nav className=" navbar navbar-expand-md navbar-light  navcolor ">
-        <div className="container">
+      <nav className=" navbar navbar-expand-md navbar-light tx-14 navcolor  ">
+        <div className="container ">
           <Link className="navbar-brand" to="/">
-            E-Commerce
+           <h2>E-QKA TİCARET</h2> 
           </Link>
           <input
-            className="w-50 d-flex justify-content-center ms-5 p-2   greensad"
+            className="w-50  ms-5 p-2   greensad"
             style={{ backgroundColor: "#f3f3f3", borderRadius: "5px" }}
             placeholder="Aradığınız ürün veya markayı yazınız"
             type="text"
@@ -61,7 +64,7 @@ function Navbars({ loggedIn, setLoggedIn }) {
               <Link to="/cart" className="nav-color my-2 my-sm-0 mx-2">
                 <AiOutlineShoppingCart size={17} />
                 <small> Sepetim </small>{" "}
-                <span className="badge bg-success">2</span>
+                <span className="badge clr-primary clr-primaryh">{cart.length}</span>
               </Link>
             </div>
           </div>

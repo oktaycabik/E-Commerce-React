@@ -13,6 +13,7 @@ import ProductDetails from "./components/product/ProductDetails/ProductDetails";
 import Footer from "./components/Footer/Footer";
 import Category from "./components/Category/Category";
 import Home from "./components/Home/Home";
+import Order from "./components/Order/Order";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/cart">
                   <Cart />
                 </Route>
+                <Route path="/order" ><Order/></Route>
 
                 <Route path="/singin">
                   <SingIn

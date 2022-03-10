@@ -63,6 +63,19 @@ export const unToUserFavorite = createAsyncThunk(
     return res.data.product;
   }
 );
+export const newOrder = createAsyncThunk(
+  "order/newOrder",
+  async (input) => {
+    const tokens1 = localStorage.getItem("access_token");
+    const res = await axios.post(`${process.env.REACT_APP_URL}/order/neworder`,input, {
+      headers: {
+        Authorization: "Bearer: " + tokens1,
+      },
+    });
+
+    return res.data.data;
+  }
+);
 
 export const productSlice = createSlice({
   name: "product",
@@ -81,6 +94,10 @@ export const productSlice = createSlice({
     [getProducts.pending]: (state, action) => {
      
       state.loading=true
+    },
+    [newOrder.fulfilled]: (state, action) => {
+     
+      console.log('action.payload', action.payload)
     },
     [getProduct.fulfilled]: (state, action) => {
       state.productDetails = action.payload;

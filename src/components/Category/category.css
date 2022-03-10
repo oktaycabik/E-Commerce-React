@@ -37,5 +37,6 @@ ul li ul.dropdown li {
 .borde:hover{
     background-color: rgb(35, 161, 35) !important;
     color:#fff !important;
-    border-radius: 15px;
+    border-radius:7px;
+    transition: .3s ease-in;
 }

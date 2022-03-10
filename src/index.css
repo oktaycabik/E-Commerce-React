@@ -14,7 +14,7 @@ a.nav-color{
   justify-content: center;
   align-items: center;
 }
-a:hover{
+ nav a:hover{
   color: rgb(35, 161, 35) !important;
 }
 .navcolor{
@@ -26,4 +26,29 @@ border: 1px solid green !important;
 }
 .greensad{
   border: none;
+}
+.tx-13{
+  font-size: 13px !important;
+}
+.tx-14{
+  font-size: 15px !important;
+  font-weight: 900 !important;
+}
+.txl-14{
+  font-size: 14px !important;
+  line-height: 34px !important;
+  
+}
+.clr-primary{
+  background-color: rgb(35 161 35) !important;
+  color:white !important
+}
+.clr-primaryh:hover{
+  background-color: rgba(35 161 35 ); 
+  opacity: 0.8;
+  transition: .3s ease-in;
+ }
+ .shadowRer{
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%) !important;
+  border: solid 2px #e6e6e6 !important;
 }

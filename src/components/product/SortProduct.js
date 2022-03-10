@@ -3,11 +3,11 @@ import React from 'react'
 function SortProduct({sort,setSort}) {
   return (
     <>
-         <div className="d-flex row justify-content-end   p-3 ">
+         <div className="d-flex row justify-content-end    ">
         <div className="d-flex col-md-10 justify-content-end  ">
           <select 
           style={{width:"150px"}}
-          className='form-select a '
+          className='form-select  a'
             name="text"
             value={sort}
             onChange={(e) => setSort(e.target.value)}

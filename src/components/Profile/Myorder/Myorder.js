@@ -18,7 +18,7 @@ function Myorder() {
       </div>
       {
         order.map(order=>(
-          <div key={order._id} className="card mt-3">
+          <div key={order._id} className="card mt-3 tx-13">
           <div
             style={{ backgroundColor: "#faf9f9" }}
             className=" d-flex flex-row justify-content-between  "
@@ -43,7 +43,7 @@ function Myorder() {
               <div className="card-text">{order.product.map(pro=>pro.price)}</div>
             </div>
             <div className=" p-3 d-flex flex-column justify-content-between card-body">
-              <button className="btn btn-success">Sipariş Detayı</button>
+              <button className="w-75 btn clr-primary clr-primaryh">Sipariş Detayı</button>
             </div>
           </div>
           <div className="border-top p-3">
