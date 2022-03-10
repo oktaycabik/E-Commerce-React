@@ -10,7 +10,7 @@ function Cart() {
   const cartTotalPrice = () => {
     let total = 0;
     for (var i = 0; i < cart.length; i++) {
-      const a =cart[i].product.price.replace(",",".")
+      const a =cart[i].product?.price
       total += Number(a);
      
     }
