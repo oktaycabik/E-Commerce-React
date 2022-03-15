@@ -4,12 +4,13 @@
 body {
   margin: 0;
   font-family: 'Source Sans Pro', sans-serif !important;
+  background-color: #fefefe !important;
 }
 
 
 a.nav-color{
   text-decoration-line: none !important;
-  color: black !important;
+  color: #333333!important;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -30,6 +31,10 @@ border: 1px solid green !important;
 .tx-13{
   font-size: 13px !important;
 }
+.txs-14{
+  font-size: 14px !important;
+
+}
 .tx-14{
   font-size: 15px !important;
   font-weight: 900 !important;
@@ -41,14 +46,75 @@ border: 1px solid green !important;
 }
 .clr-primary{
   background-color: rgb(35 161 35) !important;
-  color:white !important
+  color:white !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  transition:all .3s ease-in !important;
 }
-.clr-primaryh:hover{
-  background-color: rgba(35 161 35 ); 
+.clr-primary:hover{
+  background-color: rgb(35 161 35) !important;
   opacity: 0.8;
-  transition: .3s ease-in;
+ 
  }
  .shadowRer{
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%) !important;
   border: solid 2px #e6e6e6 !important;
+}
+
+input:focus{
+ border:1px solid #e6e6e6 !important;
+  box-shadow: none !important;
+}
+input{
+  border:1px solid #e6e6e6 !important;
+}
+.tx-15{
+  font-size: 15px;
+}
+.icon-color{
+  color: rgba(0, 0, 0, 0.425) !important;
+}
+.icon-color:hover{
+  color: red !important;
+}
+.icon-border{
+  border:1px solid green !important;
+  border-radius: 500px;
+}
+.cart-image{
+  width: 80px !important;
+  height: 100px !important;
+}
+.count-btn{
+  
+  border: 1px solid rgb(247, 248, 248) !important;
+  border-radius: 0% !important;
+  background-color: rgb(247, 248, 248) !important;
+  color: rgb(35, 161, 35) !important;
+ 
+}
+.count-btn:hover{
+  background-color: rgb(35, 161, 35) !important;
+  color:#fff !important;
+}
+.count{
+  border-top: 1px rgb(247, 248, 248) solid !important;
+  border-bottom: 1px rgb(247, 248, 248) solid !important;
+  color:#4a4a4a !important;
+}
+
+.primary-color{
+  color: rgb(35, 161, 35) !important;
+  opacity: 0.9 !important;
+
+}
+.primary-colorw{
+  color: rgb(35, 161, 35) !important;
+  
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+.primary-bgcolor{
+  background-color: rgb(35, 161, 35) !important;
+  color:#fff !important
 }

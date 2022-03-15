@@ -34,13 +34,13 @@ function Navbars({ loggedIn, setLoggedIn }) {
             <div className="d-flex  mt-2 mt-md-0">
               {!loggedIn && (
                 <>
-                  <Link to="/singin" className="nav-color my-2 my-sm-0 mx-2 ">
-                    <BiUser size={17} />
-                    <small className=""> Giriş Yap </small>
+                  <Link to="/singin" className="nav-color my-2 my-sm-0 mx-3 ">
+                    <BiUser className="mb-1" size={18} />
+                    <span className="tx-13"> Giriş Yap </span>
                   </Link>
-                  <Link to="/register" className="nav-color my-2 my-sm-0 mx-2">
-                    <FiUserPlus size={17} />
-                    <small> Kayıt Ol </small>
+                  <Link to="/register" className="nav-color my-2 my-sm-0 mx-3">
+                    <FiUserPlus className="mb-1" size={18} />
+                    <span className="tx-13"> Kayıt Ol </span>
                   </Link>
                 </>
               )}
@@ -48,23 +48,23 @@ function Navbars({ loggedIn, setLoggedIn }) {
                 <>
                   <a
                     href="#/"
-                    className="nav-color my-2 my-sm-0 mx-2 "
+                    className="nav-color my-2 my-sm-0 mx-3 "
                     onClick={() => handleLogout()}
                   >
-                    <BiUser size={17} />
-                    <small className=""> Çıkış Yap </small>
+                    <BiUser className="mb-1" size={18} />
+                    <span className="tx-13"> Çıkış Yap </span>
                   </a>
-                  <Link to="/profile/myorder" className="nav-color my-2 my-sm-0 mx-2 ">
-                    <BiUser size={17} />
-                    <small className=""> Profil </small>
+                  <Link to="/profile/myorder" className="nav-color my-2 my-sm-0 mx-3 ">
+                    <BiUser className="mb-1" size={18} />
+                    <span className="tx-13"> Profil </span>
                   </Link>
                 </>
               )}
 
               <Link to="/cart" className="nav-color my-2 my-sm-0 mx-2">
-                <AiOutlineShoppingCart size={17} />
-                <small> Sepetim </small>{" "}
-                <span className="badge clr-primary clr-primaryh">{cart.length}</span>
+                <AiOutlineShoppingCart className="mb-1" size={18} />
+                <span className="tx-13"> Sepetim </span>{" "}
+                <span className="badge primary-bgcolor">{cart.length}</span>
               </Link>
             </div>
           </div>

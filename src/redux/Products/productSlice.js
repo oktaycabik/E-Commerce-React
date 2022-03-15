@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 export const getProducts = createAsyncThunk(
   "product/getProducts",
-  async ([sortKey, brand, details, category,id]) => {
+  async ([sortKey, brand, details, category,id,bos]) => {
     let url = `https://e-cabik.herokuapp.com/api/product`;
     if (sortKey) {
       url += "?sortBy=" + sortKey;
@@ -20,9 +20,12 @@ export const getProducts = createAsyncThunk(
     if (id) {
       url += "&category=" + id;
     }
+     if(bos){
+     return url+=bos
+    }
     const res = await axios(url);
    
-
+         console.log('url', url)
     return res.data.products;
   }
 );

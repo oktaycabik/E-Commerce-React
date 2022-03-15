@@ -14,8 +14,8 @@ function MyFavorities() {
  
   return (
     <div>
-      <div className="card  ">
-        <div className=" p-3 cards card-text">Favorilerim</div>
+      <div className="card shadowRer ">
+        <div className=" p-3 cards card-text profile-title">Favorilerim</div>
       </div>
       <div className="row">
         {user?.favorites?.map((fav, key) => (

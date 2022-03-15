@@ -25,14 +25,17 @@ import { addCart, addCartOrder, inraceQuantity, inraceQuantity2 } from "../../re
 function Product() {
   const [sort, setSort] = useState("önerilen");
   const { id } = useParams();
-
+  const newCart = useSelector((state) => state.cart.newCart);
   const products = useSelector((state) => state.item.product);
   const loading = useSelector((state) => state.item.loading);
   const user = useSelector((state) => state.user.profile);
   const cart = useSelector((state) => state.cart.items);
-  const newCart = useSelector((state) => state.cart.newCart);
+  useEffect(() => {
+    localStorage.setItem("product", JSON.stringify(cart));
+    localStorage.setItem("product_id", JSON.stringify(newCart));
+  }, [cart,newCart]);
   const dispatch = useDispatch();
-  console.log("loading", loading);
+  
   const userId = localStorage.getItem("id");
   const formik = useFormik({
     initialValues: {
@@ -65,25 +68,21 @@ function Product() {
     formik.values.category,
     id,
   ]);
-  useEffect(() => {
-    localStorage.setItem("product", JSON.stringify(cart));
-    localStorage.setItem("product_id", JSON.stringify(newCart));
-  }, [cart,newCart]);
+  
 
   const addToCart = (productName,productId) => {
     const copyCart = cart.findIndex(
       (pro) => pro.product._id === productName._id
     );
-    const copyCart2 = newCart.findIndex(
-      (pro) => pro.product_id === productId
-    );
-
-    if (copyCart > -1 &&copyCart2>-1) {
+   
+ console.log('copyCart', copyCart)
+ 
+    if (copyCart > -1 ) {
       dispatch(inraceQuantity(copyCart));
-      dispatch(inraceQuantity2(copyCart2));
-    } else if (copyCart === -1 &&copyCart2 === -1) {
+      
+    } else if (copyCart === -1 ) {
       dispatch(addCart({ product: productName, quantity: 1 }));
-      dispatch(addCartOrder({ product_id: productId, quantity: 1 }));
+     
     }
   };
   const addToFavorite = (productId) => {
@@ -123,7 +122,7 @@ function Product() {
           {!loading && (
             <div style={{ backgroundColor: "#fefefe" }} className="row p-2 ">
               <div className="d-flex justify-content-between p-2">
-                <h5>"{id}" araması için {products.length} sonuç listeleniyor</h5>
+                <h5><b>"{id}" araması için {products.length} sonuç listeleniyor</b> </h5>
                 <SortProduct sort={sort} setSort={setSort} />
               </div>
              
@@ -137,7 +136,7 @@ function Product() {
                       >
                         <img
                           alt=""
-                          className="img-1 "
+                          className="img-1 h-75 "
                           src={`/${pro?.product_image}`}
                         />
                       </Link>
@@ -157,15 +156,15 @@ function Product() {
                     <div className="product-content text-start">
                       <h2 className="title">
                         <strong>
-                          <small>{pro.brand}</small>{" "}
+                          <span className="txs-14">{pro.brand}</span>{" "}
                         </strong>
                       </h2>
                       <div className="card-text">
                         <small> {truncateString(pro.name, 45)}</small>
                       </div>
-                      <div className="price text-success">
+                      <div className="price primary-colorw">
                         {" "}
-                        <b>{pro.price} TL </b>
+                        <>{pro.price} TL </>
                       </div>
                     </div>
                   </div>

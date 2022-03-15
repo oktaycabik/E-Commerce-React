@@ -23,15 +23,15 @@ function Userinfo({profile}) {
   });
   return (
     <div>
-      <div className="card  ">
+      <div className="card shadowRer profile-title ">
         <div className=" p-3 cards card-text">Kullanıcı Bilgileri</div>
       </div>
       <div>
-        <div className=" mt-2">
-          <div className="card col-md-6 p-3">
+        <div className=" mt-2 ">
+          <div className="card shadowRer col-md-6 p-3">
           <form onSubmit={formik.handleSubmit} type="submit">
-            <label className="form-label" htmlFor="name">
-               <b><>Adınız</></b>
+            <label className="form-label tx-14" htmlFor="name">
+               Adınız
             </label>
             <input style={{backgroundColor:"#fbfbfb"}}
               onChange={formik.handleChange}
@@ -42,8 +42,8 @@ function Userinfo({profile}) {
               id="name"
            
             />
-             <label className="form-label  mt-2" htmlFor="email">
-              E-mail
+             <label className="form-label tx-14 mt-4" htmlFor="email">
+             E-mail
             </label>
             <input style={{backgroundColor:"#fbfbfb"}}
               onChange={formik.handleChange}
@@ -54,8 +54,8 @@ function Userinfo({profile}) {
               id="email"
              
             />
-             <label className="form-label  mt-2" htmlFor="tel_number">
-              Cep Telefonu
+             <label className="form-label tx-14  mt-4" htmlFor="tel_number">
+             Cep Telefonu
             </label>
             <input style={{backgroundColor:"#fbfbfb"}}
               onChange={formik.handleChange}
@@ -66,7 +66,7 @@ function Userinfo({profile}) {
               id="tel_number"
           
             />
-              <label className="form-label  mt-2" htmlFor="date">
+              <label className="form-label tx-14 mt-4" htmlFor="date">
               Doğum Tarihi
             </label>
             <input style={{backgroundColor:"#fbfbfb"}}
@@ -78,8 +78,8 @@ function Userinfo({profile}) {
               id="date"
              
             />
-             <button className="w-100 btn btn-lg btn-success  mt-3" type="submit">
-            Kaydet
+             <button className="w-100 btn clr-primary mt-3" type="submit">
+            KAYDET
           </button>
           </form>
           </div>

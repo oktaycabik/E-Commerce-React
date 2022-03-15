@@ -47,7 +47,7 @@ function ProductDetails() {
                     />
                   </div>
                 </div>
-                <div className="col-md-7 p-3">
+                <div className="col-md-7 p-3 ">
                   <div className="card-title fs-5">
                     <b>{product.brand}</b> {product.name}
                   </div>
@@ -58,13 +58,13 @@ function ProductDetails() {
                   </div>
                   <div className="row mt-5">
                     <div className="col-md-10">
-                      <div onClick={()=>addToCart()} className="btn btn-success w-100 p-2">
+                      <div onClick={()=>addToCart()} className="btn clr-primary w-100 p-2">
                         Sepete Ekle
                       </div>
                     </div>
                     <div className="col-md-2">
                       <div className="div">
-                        <button className="card d-flex align-items-center p-2 ">
+                        <button className="card d-flex  align-items-center p-2 ">
                           <BsSuitHeart color="green" size={27} className="" />
                         </button>
                       </div>
