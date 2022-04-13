@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { getProfileById } from "../../redux/Auth/authSlice";
 import { newOrder } from "../../redux/Products/productSlice";
-
+import { useHistory } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 import "./order.css"
-function Order() {
 
+function Order() {
+  const [show, setShow] = useState(false);
   const [carts, setCarts] = useState([]);
   const profile = useSelector((state) => state.user.profile);
   const dispatch = useDispatch();
+  const history=useHistory()
   useEffect(() => {
  
     setCarts(JSON.parse(localStorage.getItem("product")));
@@ -17,8 +20,9 @@ function Order() {
 
   const mapOrder=carts.map(a=>a.product._id)
   const buyOrder = () => {
-    console.log("product", mapOrder);
+    
     dispatch(newOrder({ product: mapOrder}));
+    setShow(true)
   };
   const cartTotalPrice = () => {
     let total = 0;
@@ -30,9 +34,17 @@ function Order() {
      
     return total;
   };
-  
+  const closeAlert =async () => {
+    setTimeout(() => {
+      setShow(false);
+     
+    }, 1000);
+     history.push("/profile/myorder")
+  };
   return (
     <>
+    
+     
       <div className="row">
         <div className="col-md-8 card shadowRer p-3 ">
           <div className="row d-flex justify-content-center">
@@ -77,6 +89,15 @@ function Order() {
          
           
         </div>
+        {show && (
+        <>
+          <div className="col-md-12 d-flex justify-content-center mt-2">
+            <Alert className="p-2 alert-success" variant="success" onClose={closeAlert()}>
+              <span>Siparişiniz Başarıyla Oluşturuldu</span>
+            </Alert>
+          </div>
+        </>
+      )}
       </div>
     </>
   );

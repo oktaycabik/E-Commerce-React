@@ -30,7 +30,7 @@ function Myorder() {
   
 //  total()
 
-console.log(order)
+
   return (
     <>
       <div className="card shadowRer">
@@ -57,37 +57,39 @@ console.log(order)
             </div>
             <div className=" p-3 d-flex flex-column justify-content-between card-body">
               <div className="card-text">
-                <strong>Tutar</strong>
-              </div>
-              <div className="card-text">
-               
-                  <div className="card-text">{order.product.map(a=>(
-                        <div>{a.price}</div>)
-                  
-                   
-                  )}</div>
               
               </div>
+            
             </div>
             <div className=" p-3 d-flex flex-column justify-content-between card-body">
-              <button className="w-75 btn clr-primary ">Sipariş Detayı</button>
+              <button className="w-75 btn btn-14 clr-primary ">Sipariş Detayı</button>
             </div>
           </div>
-          <div className="border-top p-3">
+        {
+          order.product.map((pro)=>(
+            <div className="border-top p-3 ">
             <div className="card p-3 d-flex flex-row justify-content-around ">
-              <div className=" p-3 d-flex flex-column justify-content-between card-body">
+              <div className=" p-1 d-flex flex-column justify-content-center card-body">
                 <div className="card-text">Sipariş Durumu</div>
               </div>
-              <div className=" p-3 d-flex flex-column justify-content-between card-body">
-                <div className="card-image">
-                   {order.product.map((pro) =>(
-                     <ul><li>{pro.name}</li></ul>
-                   ))}
+              <div className=" p-1 d-flex flex-column justify-content-center card-body">
+                <div style={{width:50,heigth:50}} className="">
+                
+                   <img   src={`/${pro?.product_image}`} alt=""  className="w-100"/> 
+                  
                  
                 </div>
               </div>
+              <div className=" p-1 d-flex flex-column justify-content-center card-body">
+                <div className="card-text">{pro.price}TL</div>
+              </div>
             </div>
           </div>
+          ))
+        }
+       
+       
+       
         </div>
       ))}
     </>

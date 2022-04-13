@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  useParams } from "react-router-dom";
 import { getProduct } from "../../../redux/Products/productSlice";
-import { BsSuitHeart } from "react-icons/bs";
-import { inraceQuantity,addCart} from "../../../redux/Cart/cartSlice";
+import {  FaHeart } from "react-icons/fa";
 
+import { inraceQuantity,addCart} from "../../../redux/Cart/cartSlice";
+import {Link} from "react-router-dom"
 function ProductDetails() {
+  
   const product = useSelector((state) => state.item.productDetails);
   const cart = useSelector((state) => state.cart.items);
  
@@ -29,10 +31,12 @@ function ProductDetails() {
 
     }
   }
+  
   console.log('cart', cart)
   
   return (
     <>
+   
       <div className="row">
         <div className="col-md-9">
           <div className="row">
@@ -64,9 +68,9 @@ function ProductDetails() {
                     </div>
                     <div className="col-md-2">
                       <div className="div">
-                        <button className="card d-flex  align-items-center p-2 ">
-                          <BsSuitHeart color="green" size={27} className="" />
-                        </button>
+                        <Link className="card d-flex favorites  align-items-center p-2 ">
+                          <FaHeart  size={27}  />
+                        </Link>
                       </div>
                     </div>
                     <div className="border-top border-bottom mt-3">

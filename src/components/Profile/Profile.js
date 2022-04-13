@@ -8,14 +8,20 @@ import MyFavorites from "./MyFavorites/MyFavorites";
 import MyAddress from "./MyAddress/MyAddress";
 import "./profile.css"
 import { useSelector,useDispatch } from "react-redux";
-import { getProfileById } from "../../redux/Auth/authSlice";
-
-function Profile() {
+import { getProfileById, logout } from "../../redux/Auth/authSlice";
+import { useHistory } from "react-router-dom";
+function Profile({setLoggedIn}) {
   
   let { path, url } = useRouteMatch();
-  
+  let history = useHistory();
+
   const profile = useSelector((state) => state.user.profile);
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    setLoggedIn(false);
+    history.push("/")
+  };
   useEffect(() => {
    
     dispatch(getProfileById());
@@ -26,7 +32,7 @@ function Profile() {
      
       <Router>
         <Row> 
-          <Col xs="2">
+          <div className="col-sm-2 col">
       <div className="list-group ">
         <Link to={`${url}/myorder`}className="list-group-item list-group-item-action border-card " aria-current="true">
         Siparişlerim
@@ -34,17 +40,19 @@ function Profile() {
         <Link to={`${url}/userinfo`} className="list-group-item list-group-item-action border-card">Kullanıcı Bilgilerim</Link>
         <Link to={`${url}/myfavorites`} className="list-group-item list-group-item-action border-card">Favorilerim</Link>
         <Link to={`${url}/myaddress`} className="list-group-item list-group-item-action border-card">Adres Bilgilerim</Link>
-
+        <button onClick={() => handleLogout()} className="btn clr-primary btn-14">Çıkış Yap</button>
       </div>
-      </Col>
-      <Col xs="10"> 
+      </div>
+      <div className="col-sm-8"> 
       <Switch>
       <Route path={`${path}/myorder`}><Myorder/></Route>
       <Route path={`${path}/userinfo`}><Userinfo profile={profile}/></Route>
       <Route path={`${path}/myfavorites`}><MyFavorites/></Route>
       <Route path={`${path}/myaddress`}><MyAddress profile={profile}/></Route>
+      
       </Switch>
-      </Col>
+      
+      </div>
      
       </Row>
      

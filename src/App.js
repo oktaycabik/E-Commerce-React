@@ -39,28 +39,29 @@ function App() {
   return (
     <>
       <Router>
+     
         <Row>
           <Navbars loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
          
         </Row>
         <Row>
           
-          <Category/>
+       
         </Row>
-            
-        <Container className="pe-5 ps-5">
+      
+        <Container className="">
           <Row>
             
               <Switch>
                
                 <Route path="/profile">
-                  <Profile />
+                  <Profile setLoggedIn={setLoggedIn} />
                 </Route>
                 <Route path="/register">
                   <Register />
                 </Route>
                 <Route path="/cart">
-                  <Cart />
+                  <Cart loggedIn={loggedIn} />
                 </Route>
                 <Route path="/order" ><Order/></Route>
 
@@ -77,7 +78,7 @@ function App() {
                
                
                 <Route path="/:id">
-                  <Product />
+                  <Product loggedIn={loggedIn}/>
                 </Route>
                 <Route path="/">
                   <Home />

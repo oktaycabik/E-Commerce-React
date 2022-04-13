@@ -11,7 +11,7 @@ import {
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-function Cart() {
+function Cart({loggedIn}) {
   const cart = useSelector((state) => state.cart.items);
 
   const dispatch = useDispatch();
@@ -25,8 +25,8 @@ function Cart() {
   const cartTotalPrice = () => {
     let total = 0;
     for (var i = 0; i < cart.length; i++) {
-      const a = cart[i].product?.price * cart[i].quantity;
-      total += Number(a);
+      const a = Number(cart[i].product?.price) * cart[i].quantity;
+      total += a;
     }
 
     return total;
@@ -39,12 +39,18 @@ function Cart() {
     if (string.length <= maxLength) return string;
     return `${string.substring(0, maxLength)}...`;
   };
-  console.log("carts", cart);
+  
+  const isLogged=()=>{
+    if(loggedIn){
+      return "/order"
+    }
+    return "/singin"
+  }
   return (
     <>
       {!cart[0] && (
-        <>
-          <div className="card mt-5 p-5 shadowRer flex-row icon-border">
+        <div className="d-flex justify-content-center">
+          <div className="card mt-5 p-5 shadowRer flex-row icon-border col-12  ">
             <div className="">
               <AiOutlineShoppingCart
                 color="green"
@@ -57,7 +63,7 @@ function Cart() {
               <b>Sepetinizde Ürün Bulunmamaktadır. </b>
             </h5>
           </div>
-        </>
+        </div>
       )}
 
       {cart[0] && (
@@ -170,7 +176,7 @@ function Cart() {
                   </div>
                 </div>
               </div>
-              <Link to="/order" className="btn clr-primary clr-primaryh mt-4">
+              <Link  to={isLogged} className="btn clr-primary clr-primaryh mt-4">
                 Sepeti Onayla
               </Link>
             </div>

@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 export const getProducts = createAsyncThunk(
   "product/getProducts",
-  async ([sortKey, brand, details, category,id,bos]) => {
+  async ([sortKey, brand, details, id, title]) => {
     let url = `https://e-cabik.herokuapp.com/api/product`;
     if (sortKey) {
       url += "?sortBy=" + sortKey;
@@ -14,18 +14,17 @@ export const getProducts = createAsyncThunk(
     if (details) {
       url += "&details=" + details;
     }
-    if (category) {
-      url += "&category=" + category;
-    }
+
     if (id) {
       url += "&category=" + id;
     }
-     if(bos){
-     return url+=bos
+    if (title) {
+      url += "&search=" + title;
     }
+
     const res = await axios(url);
-   
-         console.log('url', url)
+
+    console.log("url", url);
     return res.data.products;
   }
 );
@@ -40,11 +39,14 @@ export const addToUserFavorite = createAsyncThunk(
   "product/addToUserFavorite",
   async (id) => {
     const tokens1 = localStorage.getItem("access_token");
-    const res = await axios(`${process.env.REACT_APP_URL}/product/favori/${id}`, {
-      headers: {
-        Authorization: "Bearer: " + tokens1,
-      },
-    });
+    const res = await axios(
+      `${process.env.REACT_APP_URL}/product/favori/${id}`,
+      {
+        headers: {
+          Authorization: "Bearer: " + tokens1,
+        },
+      }
+    );
 
     return res.data.product;
   }
@@ -66,19 +68,21 @@ export const unToUserFavorite = createAsyncThunk(
     return res.data.product;
   }
 );
-export const newOrder = createAsyncThunk(
-  "order/newOrder",
-  async (input) => {
-    const tokens1 = localStorage.getItem("access_token");
-    const res = await axios.post(`${process.env.REACT_APP_URL}/order/neworder`,input, {
+export const newOrder = createAsyncThunk("order/newOrder", async (input) => {
+  const tokens1 = localStorage.getItem("access_token");
+  const res = await axios.post(
+    `${process.env.REACT_APP_URL}/order/neworder`,
+    input,
+    {
       headers: {
         Authorization: "Bearer: " + tokens1,
       },
-    });
+    }
+  );
 
-    return res.data.data;
-  }
-);
+  return res.data.data;
+});
+
 
 export const productSlice = createSlice({
   name: "product",
@@ -86,21 +90,25 @@ export const productSlice = createSlice({
     product: [],
     cart: [],
     productDetails: {},
-    loading:false,
+    title: "",
+    loading: false,
   },
-  reducers: {},
+  reducers: {
+    setTitle: (state, action) => {
+      state.title = action.payload;
+    },
+  },
   extraReducers: {
     [getProducts.fulfilled]: (state, action) => {
       state.product = action.payload;
-      state.loading=false
+      state.loading = false;
     },
+  
     [getProducts.pending]: (state, action) => {
-     
-      state.loading=true
+      state.loading = true;
     },
     [newOrder.fulfilled]: (state, action) => {
-     
-      console.log('action.payload', action.payload)
+      console.log("action.payload", action.payload);
     },
     [getProduct.fulfilled]: (state, action) => {
       state.productDetails = action.payload;
@@ -110,11 +118,9 @@ export const productSlice = createSlice({
       const { _id } = action.payload;
       const index = state.product.findIndex((a) => a._id === _id);
       state.product[index].favori.push(userId);
-     
     },
 
     [unToUserFavorite.fulfilled]: (state, action) => {
-     
       const userId = localStorage.getItem("id");
       const { _id } = action.payload;
       const index = state.product.findIndex((a) => a._id === _id);
@@ -124,3 +130,4 @@ export const productSlice = createSlice({
   },
 });
 export default productSlice.reducer;
+export const { setTitle } = productSlice.actions;
