@@ -9,15 +9,93 @@ function FilterDetails({ formik }) {
   const ram = ["4GB", "8GB", "16GB"];
   const laptop_memory=["128","256","1TB","512"]
   const core=["Intel Core i3","Intel Core i5","Intel Core i7"]
+  const gender =["Erkek","Kadın"]
+  
   return (
+    
     <div>
-      {id==="ayakkabı" && (
+      {id==="ayakkabı"  && (
         <Accordion defaultActiveKey="0">
           <Accordion.Item className="tolga" eventKey="0">
             <Accordion.Header><small><b>Kullanım Alanı</b></small> </Accordion.Header>
             <Accordion.Body>
               {id==="ayakkabı" &&
                 shoes.map((shoes,key) => (
+                  <div key={key} className="flex-row ">
+                    <input
+                      className="form-check-input "
+                      type="checkbox"
+                      value={shoes}
+                      id={shoes}
+                      name="kullanım"
+                      onChange={formik.handleChange}
+                    />
+                    <label className="ms-1" htmlFor={shoes}>
+                    <small>{shoes} </small>
+                    </label>
+                  </div>
+                ))}
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      )}
+      {id==="ayakkabı" && (
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item className="tolga" eventKey="0">
+            <Accordion.Header><small><b>Cinsiyet</b></small> </Accordion.Header>
+            <Accordion.Body>
+              {id==="ayakkabı" &&
+                gender.map((shoes,key) => (
+                  <div key={key} className="flex-row ">
+                    <input
+                      className="form-check-input "
+                      type="checkbox"
+                      value={shoes}
+                      id={shoes}
+                      name="kullanım"
+                      onChange={formik.handleChange}
+                    />
+                    <label className="ms-1" htmlFor={shoes}>
+                    <small>{shoes} </small>
+                    </label>
+                  </div>
+                ))}
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      )}
+       {id==="tshirt" && (
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item className="tolga" eventKey="0">
+            <Accordion.Header><small><b>Cinsiyet</b></small> </Accordion.Header>
+            <Accordion.Body>
+              {id==="tshirt" &&
+                gender.map((shoes,key) => (
+                  <div key={key} className="flex-row ">
+                    <input
+                      className="form-check-input "
+                      type="checkbox"
+                      value={shoes}
+                      id={shoes}
+                      name="kullanım"
+                      onChange={formik.handleChange}
+                    />
+                    <label className="ms-1" htmlFor={shoes}>
+                    <small>{shoes} </small>
+                    </label>
+                  </div>
+                ))}
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      )}
+       {id==="pantolon" && (
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item className="tolga" eventKey="0">
+            <Accordion.Header><small><b>Cinsiyet</b></small> </Accordion.Header>
+            <Accordion.Body>
+              {id==="pantolon" &&
+                gender.map((shoes,key) => (
                   <div key={key} className="flex-row ">
                     <input
                       className="form-check-input "

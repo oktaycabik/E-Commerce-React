@@ -25,7 +25,7 @@ function SingIn({ setLoggedIn }) {
     <>
       <main className="form-signin col-md-4">
         <form onSubmit={formik.handleSubmit} type="submit">
-          <h1 className="h3 mb-3 fw-normal">Please register</h1>
+          <h1 className="h3 mb-3 fw-normal">Giriş Yapın</h1>
           <div className="form-floating">
             <input
               onChange={formik.handleChange}
@@ -51,12 +51,7 @@ function SingIn({ setLoggedIn }) {
             <label htmlFor="floatingInput">Password</label>
           </div>
 
-          <div className="checkbox mb-3">
-            <label>
-              <input type="checkbox" defaultValue="remember-me" /> Remember me
-            </label>
-          </div>
-          <button className="w-100 btn btn-lg btn-success" type="submit">
+          <button className="w-100 btn btn-lg clr-primary" type="submit">
             Giriş Yap
           </button>
         </form>

@@ -7,18 +7,17 @@ import Category from "../Category/Category";
 import { IoIosSearch } from "react-icons/io";
 import "./navbar.css";
 import { setTitle } from "../../redux/Products/productSlice";
-import {
-  Navbar,
-  
-  Nav,
- 
-  Container,
-} from "react-bootstrap";
+import { Navbar, Offcanvas, Nav, Button, Container } from "react-bootstrap";
+import { useState } from "react";
+
 function Navbars({ loggedIn, setLoggedIn }) {
   const cart = useSelector((state) => state.cart.items);
   const title = useSelector((state) => state.item.title);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div className=" ">
       <Navbar
@@ -29,12 +28,15 @@ function Navbars({ loggedIn, setLoggedIn }) {
         className=" tx-14 fixed-top"
       >
         <Container>
-          <Navbar.Brand href="#home"><h2>E-QKA TİCARET</h2> </Navbar.Brand>
-        
-         
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Brand>
+            <Link className="link-brand" to="/">
+              <h2>E-QKA TİCARET</h2>
+            </Link>{" "}
+          </Navbar.Brand>
+
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-          <div
+            <div
               style={{
                 backgroundColor: "#f3f3f3",
                 borderRadius: "5px",
@@ -107,14 +109,41 @@ function Navbars({ loggedIn, setLoggedIn }) {
                 </Link>
               </Nav.Link>
             </Nav>
+            <Button className="canvas-btn w-50 clr-primary ms-2"  onClick={handleShow}>
+        Kategoriler
+      </Button>
           </Navbar.Collapse>
+      
         </Container>
       </Navbar>
+   <div className="res">  
+   <Category  />
+   </div>
+   
+   
+    
+   
+  
 
-      <Category />
+    
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Kategoriler</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body className="col">
+          <div className="b">
+          <Category  />
+          </div>
+       
+        </Offcanvas.Body>
+      </Offcanvas>
+   
+     
       
-     
-     
+    
+    
+    
     </div>
   );
 }

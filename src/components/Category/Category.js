@@ -11,7 +11,7 @@ function Category() {
   
   return (
     <>
-      <ul className=" border-bottom txl-14 col-lg-12 col-8">
+      <ul className=" border-bottom txl-14 col-lg-12 col-8 ">
         <div className="container">
           <li className="">
             <Link to="/ayakkabı" className=" borde">

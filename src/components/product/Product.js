@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import { Alert } from "react-bootstrap";
+import { Alert, Spinner,Offcanvas,Button } from "react-bootstrap";
 import {
   getProducts,
   addToUserFavorite,
   unToUserFavorite,
-  
 } from "../../redux/Products/productSlice";
 import {
   addToProductFavorite,
@@ -26,6 +25,10 @@ function Product({ loggedIn }) {
   const [sort, setSort] = useState("önerilen");
   const [show, setShow] = useState(false);
   const [showDanger, setShowDanger] = useState(false);
+  const [shows, setShows] = useState(false);
+
+  const handleClose = () => setShows(false);
+  const handleShow = () => setShows(true);
   const { id } = useParams();
 
   let history = useHistory();
@@ -41,7 +44,7 @@ function Product({ loggedIn }) {
     localStorage.setItem("product", JSON.stringify(cart));
     localStorage.setItem("product_id", JSON.stringify(newCart));
   }, [cart, newCart]);
- 
+
   const userId = localStorage.getItem("id");
   const formik = useFormik({
     initialValues: {
@@ -65,7 +68,6 @@ function Product({ loggedIn }) {
         ])
       );
       dispatch(getProfileById(userId));
-     
     })();
   }, [
     dispatch,
@@ -153,13 +155,29 @@ function Product({ loggedIn }) {
       )}
 
       <div className="row mt-3">
-        <div style={{ backgroundColor: "#fefefe" }} className="col-md-2 col-12 p-2">
-          <FilterBrand formik={formik} />
+        <div
+          style={{ backgroundColor: "#fefefe" }}
+          className="col-md-2 col-12 p-2"
+        >
+            <button
+              className="canvas-btn btn w-100 filter-btn ms-2"
+              onClick={handleShow}
+            >
+              Filtrele
+            </button>
+            <div className="res">
+            <FilterBrand formik={formik} />
           <FilterDetails formik={formik} />
+            </div>
+        
         </div>
-
+       
         <div className=" col-md-10 col-12">
-          {loading && <div className="loading col-md-10">Loading...</div>}
+          {loading && (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          )}
           {!loading && (
             <div style={{ backgroundColor: "#fefefe" }} className="row p-2 ">
               <div className="d-flex justify-content-between p-2">
@@ -219,6 +237,18 @@ function Product({ loggedIn }) {
           )}
         </div>
       </div>
+      
+      <Offcanvas show={shows} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Filtrele</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body className="col">
+          <div className="b">
+          <FilterBrand formik={formik} />
+          <FilterDetails formik={formik} />
+          </div>
+        </Offcanvas.Body>
+      </Offcanvas>
     </>
   );
 }

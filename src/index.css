@@ -144,3 +144,26 @@ input{
 .favorites:hover{
   color: rgb(35, 161, 35) !important;
 }
+.link-brand{
+  text-decoration: none !important ;
+  color: #333333 !important;
+}
+@media (max-width:768px) {
+  .res{
+    display: none;
+  }
+}
+@media (min-width:769px) {
+  .canvas-btn{
+    display: none !important;
+  }
+}
+.filter-btn{
+  color: #333333 !important;
+  border: 1px solid black !important;
+}
+.filter-btn:hover{
+  background-color: rgb(35, 161, 35) !important;
+  border: 1px solid white !important;
+  color: white !important;;
+}
