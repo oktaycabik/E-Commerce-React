@@ -109,23 +109,18 @@ function Navbars({ loggedIn, setLoggedIn }) {
                 </Link>
               </Nav.Link>
             </Nav>
-            <Button className="canvas-btn w-50 clr-primary ms-2"  onClick={handleShow}>
-        Kategoriler
-      </Button>
+            <button
+              className="canvas-btn w-50 btn clr-primary ms-2"
+              onClick={handleShow}
+            >
+              Kategoriler
+            </button>
           </Navbar.Collapse>
-      
         </Container>
       </Navbar>
-   <div className="res">  
-   <Category  />
-   </div>
-   
-   
-    
-   
-  
-
-    
+      <div className="res">
+        <Category />
+      </div>
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
@@ -133,17 +128,10 @@ function Navbars({ loggedIn, setLoggedIn }) {
         </Offcanvas.Header>
         <Offcanvas.Body className="col">
           <div className="b">
-          <Category  />
+            <Category />
           </div>
-       
         </Offcanvas.Body>
       </Offcanvas>
-   
-     
-      
-    
-    
-    
     </div>
   );
 }

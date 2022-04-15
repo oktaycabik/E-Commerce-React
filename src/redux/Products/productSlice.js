@@ -24,7 +24,7 @@ export const getProducts = createAsyncThunk(
 
     const res = await axios(url);
 
-    console.log("url", url);
+   ;
     return res.data.products;
   }
 );
@@ -108,7 +108,7 @@ export const productSlice = createSlice({
       state.loading = true;
     },
     [newOrder.fulfilled]: (state, action) => {
-      console.log("action.payload", action.payload);
+     
     },
     [getProduct.fulfilled]: (state, action) => {
       state.productDetails = action.payload;

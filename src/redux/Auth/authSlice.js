@@ -102,6 +102,12 @@ export const uptadeProfile = createAsyncThunk(
     return res.data;
   }
 );
+export const getAllUsers = createAsyncThunk("profiles/getAllUsers", async () => {
+
+  const res = await axios(`${process.env.REACT_APP_URL}/auth/user/getall`);
+
+  return res.data.users;
+});
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -109,18 +115,25 @@ export const authSlice = createSlice({
     profile: null,
     user2: null,
     order: [],
+    fullUsers:[]
   },
   extraReducers: {
     [login.fulfilled]: (state, action) => {
       state.user = action.payload;
      
-
-      localStorage.setItem("access_token", action.payload.access_token);
-      localStorage.setItem("id", action.payload.data.id);
+  
+    localStorage.setItem("access_token", action.payload.access_token);
+    localStorage.setItem("id", action.payload.data.id);
+   
+      
     },
     [register.fulfilled]: (state, action) => {
       state.user = action.payload;
       console.log(action.payload);
+    },
+    [getAllUsers.fulfilled]: (state, action) => {
+      state.fullUsers =action.payload
+     
     },
     [logout.fulfilled]: (state, action) => {
       state.user = null;

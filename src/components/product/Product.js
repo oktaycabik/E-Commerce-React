@@ -157,7 +157,7 @@ function Product({ loggedIn }) {
       <div className="row mt-3">
         <div
           style={{ backgroundColor: "#fefefe" }}
-          className="col-md-2 col-12 p-2"
+          className="col-md-2 col-12 p-2 pe-4"
         >
             <button
               className="canvas-btn btn w-100 filter-btn ms-2"

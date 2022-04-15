@@ -26,7 +26,7 @@ function Profile({setLoggedIn}) {
    
     dispatch(getProfileById());
   }, [dispatch]);
-  
+
   return (
     <div>
      
