@@ -10,6 +10,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [istrue, setistrue] = useState(true)
+  const [minLengthPass, setMinLengthPass] = useState(true)
   const allUsers = useSelector((state) => state.user.fullUsers);
   let history=useHistory()
   const dispatch = useDispatch();
@@ -22,11 +23,13 @@ function Register() {
    if(!findUser && passLength===true){
     dispatch(register({ name, email, password }));
     setistrue(true)
+    setMinLengthPass(passLength===false ? true:false)
     history.push("singin")
   
    }
  
    setistrue(false)
+   setMinLengthPass(false)
   };
   useEffect(() => {
     dispatch(getAllUsers());
@@ -40,7 +43,7 @@ function Register() {
           )
         }
           {
-          passLength===false &&(
+          minLengthPass===false &&(
             <div className="bg-danger text-light rounded p-2 ">Şifreniz En az 6 Karakterli olmalı!</div>
           )
         }

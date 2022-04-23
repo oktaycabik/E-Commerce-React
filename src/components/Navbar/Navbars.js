@@ -30,7 +30,7 @@ function Navbars({ loggedIn, setLoggedIn }) {
         <Container>
           <Navbar.Brand>
             <Link className="link-brand" to="/">
-              <h2>E-QKA TİCARET</h2>
+              <h2>E-COMMERCE APP</h2>
             </Link>{" "}
           </Navbar.Brand>
 

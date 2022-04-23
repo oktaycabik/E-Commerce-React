@@ -26,16 +26,16 @@ function MyFavorities() {
           <div key={pro._id} className="col-md-3 col-sm-4 col-6 mt-3 ">
           <div className="product-grid  a">
             <div className="product-image border-bottom">
-              <Link
-                to={`/product/${pro._id}/${pro.name}`}
-                className="image"
-              >
+       
+             
+             
+              
                 <img
                   alt=""
                   className="img-1 h-75 "
                   src={`/${pro?.product_image}`}
                 />
-              </Link>
+             
              
             </div>
             <div className="product-content text-start">

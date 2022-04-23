@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 function Userinfo({profile}) {
  
-  console.log("profile", profile);
+  
   const dispatch=useDispatch()
   const formik = useFormik({
     initialValues: {

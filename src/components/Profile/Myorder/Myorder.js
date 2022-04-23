@@ -15,20 +15,7 @@ function Myorder() {
     
   }, [dispatch]);
 
-//  const total=()=>{
-//   let tol=0;
-//    for(var i=0;i<order.length;i++){
-//      for(var j=0;j<order[i].product.length;j++){
-      
-//        console.log('order[i].product[j].price', order[i].product[j].price)
-//        const a=order[i].product[j].price
-//        tol+=Number(a)
-//      }
-//    }
-//    return tol
-//  }
-  
-//  total()
+
 
 
   return (
@@ -62,7 +49,7 @@ function Myorder() {
             
             </div>
             <div className=" p-3 d-flex flex-column justify-content-between card-body">
-              <button className="w-75 btn btn-14 clr-primary ">Sipariş Detayı</button>
+             
             </div>
           </div>
         {

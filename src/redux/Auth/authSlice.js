@@ -129,7 +129,7 @@ export const authSlice = createSlice({
     },
     [register.fulfilled]: (state, action) => {
       state.user = action.payload;
-      console.log(action.payload);
+     
     },
     [getAllUsers.fulfilled]: (state, action) => {
       state.fullUsers =action.payload
@@ -137,7 +137,7 @@ export const authSlice = createSlice({
     },
     [logout.fulfilled]: (state, action) => {
       state.user = null;
-      console.log(action.payload);
+  
       localStorage.removeItem("access_token");
       localStorage.removeItem("id");
     },
@@ -146,7 +146,7 @@ export const authSlice = createSlice({
     },
     [getProfile.fulfilled]: (state, action) => {
       state.user2 = action.payload;
-      console.log(action.payload);
+      
     },
     [addToProductFavorite.fulfilled]: (state, action) => {
      
